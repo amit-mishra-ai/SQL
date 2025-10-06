@@ -85,30 +85,3 @@ FROM hospital
 GROUP BY month_num, month_name
 ORDER BY month_num;
 
-
--- DATE & TIME FUNCTION
-
-SELECT NOW() AS current_datetime;
-
-SELECT CURRENT_DATE AS curent_date;
-
-SELECT admissiondate, 
-EXTRACT(DAY FROM admissiondate)AS Date,
-EXTRACT(MONTH FROM admissiondate) AS Month_name,
-EXTRACT(YEAR FROM admissiondate) AS Year_name
-FROM hospital;
-
-SELECT productname,
-AGE(CURRENT_DATE, added_date) AS Age_since_added
-FROM hospital;
-
-SELECT hospitalname,medicalexpenses,
- CASE
-    WHEN medicalexpenses>=40000 THEN 'Expensive'
-	WHEN medicalexpenses<40000 AND medicalexpenses>=10000 THEN 'Moderate'
-	ELSE 'Affordable'
-	END AS price_category
-	FROM hospital;
-
-
- 
